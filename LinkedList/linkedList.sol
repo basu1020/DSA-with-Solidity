@@ -6,7 +6,7 @@ contract LinkedList {
     struct LinkedListNode {
         uint256 id;
         uint256 value; 
-        uint256 next;  //very first thing I learned was that we cannot define recursive Struct. 
+        uint256 next;  
     }
 
     LinkedListNode[] public linkedlist;

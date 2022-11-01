@@ -2,24 +2,25 @@
 
 pragma solidity ^0.8.0;
 
-contract GeneralTree {
+contract BinaryTree {
 
-    struct GeneralTreeNode {
+    struct BinaryTreeNode {
         uint256 data;
-        uint256[] children;
+        BinaryTreeNode[] children;
         uint256 parent;
     }
 
-    GeneralTreeNode public Tree;
+    BinaryTreeNode public Tree;
 
-    constructor(){
-        Tree.data = 0;
+    constructor(uint256 _val){
+        Tree.data = _val;
+
     }
 
-    function addChildren(uint256 _val) public returns(bool) {
-        GeneralTreeNode memory _childTree;
-        Tree.children.push = _childTree
-        
-    }
+    // function addChildren(uint256 _val) public {
+    //     if (_val < Tree.data) {
+            
+    //     }
+    // }
 
 }
