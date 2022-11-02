@@ -8,15 +8,39 @@ pragma solidity ^0.8.0;
 
 contract HouseRobber {
     
-    function houseRobber(uint256[] memory nums) public pure returns(uint256){
-        if (nums.length == 1) {
-            return nums[0];
+    function houseRobber(uint256[] calldata nums)
+        public
+        pure
+        returns (uint256)
+    {
+        if (nums.length == 1) { return nums[0];}
+
+        uint256[] memory _returningArray = nums;
+
+        for (uint256 i = nums.length - 3; i > 0 ; i--) {
+            _returningArray[i] = _returningArray[i] + max(nums[i + 2:]);
         }
 
-        for (uint256 i = nums.length - 3; i >= 0; i--) {
-            nums[i] += 1;
-        }
+        // changing the 0th element of the array
+        _returningArray[0] = _returningArray[0] + max(nums[2:]);
 
-        return nums[0] >= nums[1] ? nums[0] : nums[1];
+        return _returningArray[0] >= _returningArray[1] ? _returningArray[0] : _returningArray[1];
+    }
+
+    
+    function max(uint256[] memory numbers) internal pure returns (uint256) {
+        require(numbers.length > 0);
+        uint256 maxNumber; 
+
+        for (uint256 i = 0; i < numbers.length; i++) {
+            if (numbers[i] > maxNumber) {
+                maxNumber = numbers[i];
+            }
+        }
+        return maxNumber;
     }
 }
+
+// learnings - calldata is read only
+// we can only slice arrays stored in calldata.
+// we can make changes in the variables refered to the elements stored in calldata.
