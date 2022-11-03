@@ -35,9 +35,10 @@ contract HouseRobber {
         }
         return maxNumber;
     }
-    
+
 }
 
 // learnings - calldata is read only
 // we can only slice arrays stored in calldata.
 // we can make changes in the variables refered to the elements stored in calldata.
+// write accurate conditions for your for-loop, otherwise it can give inappropiate errors. 
